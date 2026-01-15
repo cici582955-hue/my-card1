@@ -16,11 +16,17 @@
         <div class="info">
             <h2>首席交易员</h2>
             <p>我是 <strong>王菲特</strong>，一名 <strong>股票天才交易员</strong>。</p>
-            <p>我深耕于资本市场，<strong>擅于价值投资</strong>，致力于寻找具有护城河的伟大企业。</p>
+            <p>深耕资本市场，<strong>擅于价值投资</strong>，致力于寻找具有护城河的伟大企业。</p>
+            
+            <div class="market-data">
+                <span class="label">王菲特价值指数:</span>
+                <span id="index-number" class="priceUp">12,845.62</span>
+            </div>
+
             <h3>资本联系</h3>
             <ul>
                 <li>邮件: wang.fete@goldman.com</li>
-                <li>行情: <a href="#">查看我的实盘记录</a></li>
+                <li>社交: <a href="#" id="record-btn">查看我的实盘记录</a></li>
             </ul>
         </div>
     </section>
@@ -28,5 +34,26 @@
     <footer>
         <p>© 2026 王菲特 | 价值投资 · 长期主义</p>
     </footer>
+
+    <script>
+        // 模拟实时波动的数字
+        const indexElement = document.getElementById('index-number');
+        let baseValue = 12845.62;
+
+        setInterval(() => {
+            const change = (Math.random() * 2 - 0.8).toFixed(2); // 模拟涨多跌少
+            baseValue = parseFloat(baseValue) + parseFloat(change);
+            indexElement.innerText = baseValue.toLocaleString(undefined, {minimumFractionDigits: 2});
+            
+            // 变色逻辑
+            indexElement.className = change >= 0 ? 'priceUp' : 'priceDown';
+        }, 2000);
+
+        // 按钮交互
+        document.getElementById('record-btn').onclick = function(e) {
+            e.preventDefault();
+            alert('正在通过加密通道连接王菲特的私人终端...\n\n[系统提示]：耐心是投资中最高贵的品质。');
+        };
+    </script>
 </body>
 </html>
